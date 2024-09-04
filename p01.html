@@ -1,0 +1,124 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST Request Example</title>
+</head>
+<body>
+    <form id="myForm">
+        <input type="email" id="dataInput" name="email" placeholder="Enter email">
+        <input type="password" id="dataInput" name="password" placeholder="Enter password">
+        <input type="checkbox" id="dataInput" name="kd" >
+        <input type="checkbox" id="dataInput" name="kd">
+        <input type="text" name="country" >
+        <button type="submit">Submit</button>
+    </form>
+    
+    <div id="responsePopup" style="display:none; border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9;">
+        <span id="popupContent"></span>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            const formData = new FormData(this);
+            console.log(formData);
+            
+            fetch('/check', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                showPopup(data.message);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function showPopup(message) {
+            document.getElementById('popupContent').textContent = message;
+            document.getElementById('responsePopup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('responsePopup').style.display = 'none';
+        }
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST Request Example</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
+
+        <label for="kd">Kidneys (array of numbers):</label>
+        <input type="text" id="kd" name="kd" placeholder="Enter kidneys as numbers separated by commas" required><br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+            <option value="IN">India</option>
+            <option value="US">United States</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    
+    <div id="responsePopup" style="display:none; border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9;">
+        <span id="popupContent"></span>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form data
+            const formData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                kd: document.getElementById('kd').value.split(',').map(Number),
+                country: document.getElementById('country').value,
+            };
+
+            // Make POST request
+            fetch('http://localhost:3000/check', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.response.success) {
+                    showPopup("Validation successful!");
+                } else {
+                    showPopup("Validation failed: " + JSON.stringify(data.response.error.issues));
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function showPopup(message) {
+            document.getElementById('popupContent').textContent = message;
+            document.getElementById('responsePopup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('responsePopup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

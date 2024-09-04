@@ -1,6 +1,8 @@
 const express = require('express');
 let app=express();
 const zod = require('zod');
+const cors = require('cors');
+app.use(cors())
 let sch=zod.array(zod.number());
 let schema=zod.object({
     email:zod.string().email(),
