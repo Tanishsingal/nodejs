@@ -1,2 +1,15 @@
 middleware->
 authentication ,input_validation
+
+.gitkeep helps to add the empty folder
+SHAH id -unique id given to commit 
+in git some commands are ->
+Porseline command , gardening command
+
+commit object ->
+tree object ->
+blob object -> it saves the code of the time of commit
+
+git show -s --pretty=raw <hash code>
+git ls-tree 5a10853db0b93df985b24ecbf56f999f648ff84d(tree id)
+ git show b865776c346afd2ba7fa2411b95004b56bbc7687(blob id)
