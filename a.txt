@@ -16,6 +16,12 @@ git ls-tree 5a10853db0b93df985b24ecbf56f999f648ff84d(tree id)
 
 we have created a new branch and then we will merge it
 
+
 another line in dummy
 
 next line is for merging -> git merge next
+
+lets rockin india with new things
+
+the last commit in next branch 
+
