@@ -25,3 +25,4 @@ lets rockin india with new things
 
 the last commit in next branch 
 
+git diff -> it is a informatory command
