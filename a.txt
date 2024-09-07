@@ -16,6 +16,16 @@ git ls-tree 5a10853db0b93df985b24ecbf56f999f648ff84d(tree id)
 
 we have created a new branch and then we will merge it
 
+
+another line in dummy
+
+next line is for merging -> git merge next
+
 lets rockin india with new things
 
-its the last commit in next branch
+the last commit in next branch 
+
+git diff -> it is a informatory command
+
+now its time for git stash command
+this is a new line
