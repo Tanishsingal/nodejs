@@ -5,3 +5,5 @@ now it is our second line and we are going to commit it
 its another stash in this file and now see
 
 another message for mode branch
+
+this message is for blue mode and now seee
